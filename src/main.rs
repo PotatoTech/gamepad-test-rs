@@ -112,7 +112,7 @@ fn main() {
         for event in event_pump.poll_iter() {
             match event {
                 Event::ControllerDeviceAdded { which, .. } => {
-                    handle_gamepad_added(&contoller_subsystem, &mut gamepads, which, opts.debug)
+                    handle_gamepad_added(&contoller_subsystem, &mut gamepads, which, opts.verbose)
                 }
                 Event::ControllerDeviceRemoved { which, .. } => {
                     handle_gamepad_removed(&mut gamepads, which)
@@ -134,10 +134,10 @@ fn main() {
 #[derive(Clap)]
 #[clap(setting = AppSettings::DisableVersionFlag)]
 struct Opts {
-    /// Show the mapping used by each controller when it is added
-    #[clap(short, long)]
-    debug: bool,
     /// Load the mappings from the specified file
     #[clap(short, long)]
     mappings: Option<PathBuf>,
+    /// Show the mapping used by each controller when it is added
+    #[clap(short, long)]
+    verbose: bool,
 }
