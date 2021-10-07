@@ -63,7 +63,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "gamepad-test-rs"
+name = "gamepad-test"
 version = "0.1.0"
 dependencies = [
  "clap",
