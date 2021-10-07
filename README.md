@@ -4,6 +4,15 @@
 
 Tests gamepads using the Rust bindings for SDL2's game controller API.
 
+## Submodules
+
+To fetch the submodules, pass the `--recurse-submodules` flag when cloning.
+
+Alternatively, to fetch them after cloning:
+```sh
+git submodule update --init --recursive
+```
+
 ## Configuration
 
 To add a custom gamepad mapping, configure the `SDL_GAMECONTROLLERCONFIG` environment variable.
