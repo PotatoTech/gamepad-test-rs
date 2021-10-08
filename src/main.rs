@@ -16,6 +16,10 @@ fn main() {
     let sdl_context = sdl2::init().unwrap();
     let contoller_subsystem = sdl_context.game_controller().unwrap();
 
+    if opts.verbose {
+        println!("Deadzone: {}", opts.deadzone);
+    }
+
     if let Some(path) = opts.mappings {
         load_mappings(&contoller_subsystem, path);
     }
@@ -34,7 +38,7 @@ fn main() {
                 }
                 Event::ControllerAxisMotion {
                     which, axis, value, ..
-                } => handle_axis_motion(which, axis, value),
+                } => handle_axis_motion(which, axis, value, opts.deadzone),
                 Event::ControllerButtonDown { which, button, .. } => {
                     handle_button_down(which, button)
                 }
@@ -52,6 +56,9 @@ struct Opts {
     /// Load the mappings from the specified file
     #[clap(short, long)]
     mappings: Option<PathBuf>,
+    /// Set the deadzone for gamepad axes
+    #[clap(long, default_value = "0")]
+    deadzone: i16,
     /// Show the mapping used by each controller when it is added
     #[clap(short, long)]
     verbose: bool,
