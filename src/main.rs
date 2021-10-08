@@ -16,8 +16,9 @@ fn main() {
     let sdl_context = sdl2::init().unwrap();
     let contoller_subsystem = sdl_context.game_controller().unwrap();
 
+    let deadzone = opts.deadzone.unsigned_abs();
     if opts.verbose {
-        println!("Deadzone: {}", opts.deadzone);
+        println!("Deadzone: {}", deadzone);
     }
 
     if let Some(path) = opts.mappings {
@@ -38,7 +39,7 @@ fn main() {
                 }
                 Event::ControllerAxisMotion {
                     which, axis, value, ..
-                } => handle_axis_motion(which, axis, value, opts.deadzone),
+                } => handle_axis_motion(which, axis, value, deadzone),
                 Event::ControllerButtonDown { which, button, .. } => {
                     handle_button_down(which, button)
                 }

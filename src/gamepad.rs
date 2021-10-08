@@ -61,8 +61,8 @@ pub fn get_button_name(button: Button) -> &'static str {
     }
 }
 
-pub fn handle_axis_motion(joystick_id: u32, axis: Axis, value: i16, deadzone: i16) {
-    if deadzone == 0 || deadzone.unsigned_abs() < value.unsigned_abs() {
+pub fn handle_axis_motion(joystick_id: u32, axis: Axis, value: i16, deadzone: u16) {
+    if deadzone == 0 || deadzone < value.unsigned_abs() {
         println!(
             "id {}: axis {} = {}",
             joystick_id,
