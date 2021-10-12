@@ -30,62 +30,18 @@ pub fn handle_gamepad_removed(gamepads: &mut HashMap<u32, GameController>, joyst
     println!("Removed gamepad {}", joystick_id);
 }
 
-pub fn get_axis_name(axis: Axis) -> &'static str {
-    match axis {
-        Axis::LeftX => "LeftX",
-        Axis::LeftY => "LeftY",
-        Axis::RightX => "RightX",
-        Axis::RightY => "RightY",
-        Axis::TriggerLeft => "TriggerLeft",
-        Axis::TriggerRight => "TriggerRight",
-    }
-}
-
-pub fn get_button_name(button: Button) -> &'static str {
-    match button {
-        Button::A => "A",
-        Button::B => "B",
-        Button::X => "X",
-        Button::Y => "Y",
-        Button::Back => "Back",
-        Button::Guide => "Guide",
-        Button::Start => "Start",
-        Button::LeftStick => "LeftStick",
-        Button::RightStick => "RightStick",
-        Button::LeftShoulder => "LeftShoulder",
-        Button::RightShoulder => "RightShoulder",
-        Button::DPadUp => "DPadUp",
-        Button::DPadDown => "DPadDown",
-        Button::DPadLeft => "DPadLeft",
-        Button::DPadRight => "DPadRight",
-    }
-}
-
 pub fn handle_axis_motion(joystick_id: u32, axis: Axis, value: i16, deadzone: u16) {
     if deadzone == 0 || deadzone < value.unsigned_abs() {
-        println!(
-            "id {}: axis {} = {}",
-            joystick_id,
-            get_axis_name(axis),
-            value
-        );
+        println!("id {}: axis {:?} = {}", joystick_id, axis, value);
     }
 }
 
 pub fn handle_button_down(joystick_id: u32, button: Button) {
-    println!(
-        "id {}: button {} = down",
-        joystick_id,
-        get_button_name(button)
-    );
+    println!("id {}: button {:?} = down", joystick_id, button);
 }
 
 pub fn handle_button_up(joystick_id: u32, button: Button) {
-    println!(
-        "id {}: button {} = up",
-        joystick_id,
-        get_button_name(button)
-    );
+    println!("id {}: button {:?} = up", joystick_id, button);
 }
 
 pub fn load_mappings<P: AsRef<Path>>(contoller_subsystem: &GameControllerSubsystem, path: P) {
