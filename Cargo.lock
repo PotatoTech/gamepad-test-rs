@@ -27,9 +27,9 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
 name = "cfg-if"
-version = "0.1.10"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4785bdd1c96b2a846b2bd7cc02e86b6b3dbf14e7e53446c4f54c92a361040822"
+checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "clap"
@@ -167,8 +167,7 @@ dependencies = [
 [[package]]
 name = "sdl2"
 version = "0.34.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "deecbc3fa9460acff5a1e563e05cb5f31bba0aa0c214bb49a43db8159176d54b"
+source = "git+https://github.com/Rust-SDL2/rust-sdl2#b19ecff8136dc81fe37c2674073f03a25a45fbbe"
 dependencies = [
  "bitflags",
  "lazy_static",
@@ -179,8 +178,7 @@ dependencies = [
 [[package]]
 name = "sdl2-sys"
 version = "0.34.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41a29aa21f175b5a41a6e26da572d5e5d1ee5660d35f9f9d0913e8a802098f74"
+source = "git+https://github.com/Rust-SDL2/rust-sdl2#b19ecff8136dc81fe37c2674073f03a25a45fbbe"
 dependencies = [
  "cfg-if",
  "libc",
